@@ -21,7 +21,7 @@ except:
     print("Errorrrrrrrrrrrr")
 usernameList=[]
 for q in query:
-    tweets = tweepy.Cursor(api.search_tweets,q, lang="en").items(50)
+    tweets = tweepy.Cursor(api.search_tweets,q, lang="en").items(100)
     list_tweets = [tweet for tweet in tweets]
     for tweet in list_tweets:
         usernameList.append(tweet.user.screen_name)
@@ -44,7 +44,7 @@ for i in usernameList:
     userID =i
     tweets = api.user_timeline(screen_name=userID,
                                # 200 is the maximum allowed count
-                               count=50,
+                               count=100,
                                include_rts=False, )
     list_tweets = [tweet for tweet in tweets]
 

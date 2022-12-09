@@ -69,21 +69,21 @@ def get_avg():
 
         for hashtweets in ret.items():
             c= hashtweets[1]
-            repeated_hash= 0
+            hash= 0
             if len(c) > 0:
                 a= hashtweets[1][0]
                 b= hashtweets[1][-1]
                 # print(a.created_at)
                 diff = a.created_at - b.created_at
-                if diff.total_seconds() > 0:
-                    repeated_hash+= 1
                 # print(diff.total_seconds())
                 sum += diff.total_seconds()
                 # print(sum)
+                hash += 1
 
-        if repeated_hash > 0:
-            validUsers += 1
-            avg = sum / repeated_hash
+        validUsers += 1
+
+        if hash > 0:
+            avg = sum / hash
             totalavgsum += avg
             userAvg.append(avg)
 
@@ -103,3 +103,5 @@ print("Our Final answer")
 print(sum)
 
 
+
+# t = datetime.strptime("0 days 00:00:00"," %H:%M:%S"
