@@ -59,31 +59,28 @@ def get_avg():
                 if word in ret:
                     ret[word] += [tweet]
                 else:
-                    ret[word] = []
+                    ret[word] = [tweet]
                 # print(word)
 
-        if len(ret) == 0:
-            continue
+        # if len(ret) == 0:
+        #     continue
 
         sum = 0
 
         for hashtweets in ret.items():
             c= hashtweets[1]
-            hash= 0
-            if len(c) > 0:
-                a= hashtweets[1][0]
-                b= hashtweets[1][-1]
-                # print(a.created_at)
-                diff = a.created_at - b.created_at
-                # print(diff.total_seconds())
-                sum += diff.total_seconds()
-                # print(sum)
-                hash += 1
+            a= hashtweets[1][0]
+            b= hashtweets[1][-1]
+            # print(a.created_at)
+            diff = a.created_at - b.created_at
+            # print(diff.total_seconds())
+            sum += diff.total_seconds()
+            # print(sum)
 
         validUsers += 1
 
-        if hash > 0:
-            avg = sum / hash
+        if len(tweets) > 0:
+            avg = sum / len(tweets)
             totalavgsum += avg
             userAvg.append(avg)
 
