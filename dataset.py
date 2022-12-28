@@ -1,4 +1,6 @@
 import tweepy
+import numpy as np
+from datetime import datetime
 import random
 import pandas as pd
 api_key = "eaLFxqln7SellQfGri9cccKla"
@@ -34,9 +36,8 @@ print(len(usernameList))
 
 db = pd.DataFrame(columns=['username',
                            'hashtag',
-                           'first tweet',
-                           'last tweet',
-                           'difference'])
+                           'difference',
+                           'times of all tweets'])
 
 
 
@@ -44,7 +45,7 @@ for i in usernameList:
     userID =i
     tweets = api.user_timeline(screen_name=userID,
                                # 200 is the maximum allowed count
-                               count=100,
+                               count=200,
                                include_rts=False, )
     list_tweets = [tweet for tweet in tweets]
 
@@ -55,7 +56,7 @@ for i in usernameList:
     # list for extracting information about each tweet
 
     for tweet in list_tweets:
-        # print(tweet.entities['hashtags'])
+        #print(tweet.entities['hashtags'])
         for l in tweet.entities['hashtags']:
             word = l['text']
             if word in ret:
@@ -68,7 +69,6 @@ for i in usernameList:
         continue
 
     sum = 0
-
     for hashtweets in ret.items():
         c = hashtweets[1]
         if len(c) > 0:
@@ -77,10 +77,12 @@ for i in usernameList:
             # print(a.created_at)
             diff = a.created_at - b.created_at
             hashtext = hashtweets[0]
-
+            arr=np.array([]) #store the times of all tweets of that particular hashtag
+            for j in hashtweets[1]:
+                arr=np.append(arr,j.created_at)
             # Here we are appending all the
             # extracted information in the DataFrame
-            ith_tweet = [ userID, hashtext, a.created_at, b.created_at, diff]
+            ith_tweet = [ userID, hashtext,  diff,arr]
             print(ith_tweet)
             db.loc[len(db)] = ith_tweet
 
