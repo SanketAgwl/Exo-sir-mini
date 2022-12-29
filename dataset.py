@@ -1,6 +1,7 @@
 import tweepy
 import numpy as np
 from datetime import datetime
+from pytz import timezone
 import random
 import pandas as pd
 api_key = "eaLFxqln7SellQfGri9cccKla"
@@ -39,14 +40,22 @@ db = pd.DataFrame(columns=['username',
                            'difference',
                            'times of all tweets'])
 
-
+#utc=pytz.UTC # to convert both date times to aware as naive and aware datetimes can't be compared hence conversion in one type is needed
+startDate=datetime(2022, 1, 1, 0, 0, 0)
+print(startDate.tzinfo)
+startDate=timezone('UTC').localize(startDate) #converted in aware type
+print(startDate.tzinfo)
 
 for i in usernameList:
     userID =i
-    tweets = api.user_timeline(screen_name=userID,
+    tmp_tweets = api.user_timeline(screen_name=userID,
                                # 200 is the maximum allowed count
-                               count=200,
+                               count=1000,
                                include_rts=False, )
+    tweets = []
+    for tweet in tmp_tweets:
+        if tweet.created_at > startDate:
+            tweets.append(tweet)
     list_tweets = [tweet for tweet in tweets]
 
     # Counter to maintain Tweet Count
