@@ -79,8 +79,8 @@ def get_avg():
 
         validUsers += 1
 
-        if len(tweets) > 0:
-            avg = sum / len(tweets)
+        if len(hashtweets) > 0:
+            avg = sum / len(hashtweets)
             totalavgsum += avg
             userAvg.append(avg)
 
