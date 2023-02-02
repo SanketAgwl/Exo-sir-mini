@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54b77fe7-6669-4558-8319-740481d4cd92" name="Changes" comment="" />
+    <list default="true" id="54b77fe7-6669-4558-8319-740481d4cd92" name="Changes" comment="get_avg updated">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +92,14 @@
       <option name="presentableId" value="Default" />
       <updated>1670501105903</updated>
     </task>
+    <task id="LOCAL-00001" summary="get_avg updated">
+      <created>1675155111480</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675155111480</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,5 +112,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="get_avg updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="get_avg updated" />
   </component>
 </project>
